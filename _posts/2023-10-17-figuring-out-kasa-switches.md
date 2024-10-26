@@ -1,7 +1,9 @@
+---
 layout: post
 title: "Figuring out kasa switches"
 date: 2023-10-17 10:00:00 -0000
-categories: kasa-tapo
+tags: kasa tapo ks225
+---
 
 # What?
 

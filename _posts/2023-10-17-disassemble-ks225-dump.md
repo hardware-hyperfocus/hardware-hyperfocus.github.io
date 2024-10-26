@@ -1,7 +1,9 @@
+---
 layout: post
-title: "Figuring out kasa switches"
+title: "Disassembling KS225 dump"
 date: 2023-10-17 12:00:00 -0000
-categories: kasa-tapo
+tags: kasa tapo ks225
+---
 
 # Why
 
@@ -26,11 +28,11 @@ Stole this from the AmebaZII application note:
 
 First, let's see what's up in the partition table! I'll just open the flash dump in a hex editor...
 
-![hex editor](./2023-10-17-disassemble-ks225-dump/hex-editor.png)
+![hex editor]({{ site.baseurl }}/assets/images/2023-10-17-disassemble-ks225-dump/hex-editor.png)
 
 Referring to the partition table format...
 
-![hex editor](./2023-10-17-disassemble-ks225-dump/partition-table-format.png)
+![hex editor]({{ site.baseurl }}/assets/images/2023-10-17-disassemble-ks225-dump/partition-table-format.png)
 
 (Note: there used to be a lot of investigation logs here. Hours of bashing my head agains the table, I figured out the values in the binary are little-endian, so I need to read them backwards).
 
@@ -74,13 +76,13 @@ OK, so here's the thing. My dump is 2MB. The flash chip on the KS225 is 4MB 🤦
 Everything I did before was with the 2MB assumption, so hopefully - maybe - the data beyond that is untouched. So I'll just try to write what I have.
 
 After extracting the relevant portions with `dd`, I'm left with these:
-![split partitions](./2023-10-17-disassemble-ks225-dump/split-partitions.png)
+![split partitions]({{ site.baseurl }}/assets/images/2023-10-17-disassemble-ks225-dump/split-partitions.png)
 
 Using the "Generate" feature of `AmebaZII_PGTool`, let's try to make a new image:
-![generating image](./2023-10-17-disassemble-ks225-dump/generating-image.png)
+![generating image]({{ site.baseurl }}/assets/images/2023-10-17-disassemble-ks225-dump/generating-image.png)
 
 ...and flashing fails with the same error as before:
-![flashing error](./2023-10-17-disassemble-ks225-dump/flashing-error.png)
+![flashing error]({{ site.baseurl }}/assets/images/2023-10-17-disassemble-ks225-dump/flashing-error.png)
 
 What I can do though is try to write each split piece one by one, manually specifying offsets. Sidenote - for some reason I need to restart the board in download mode every time (??).
 

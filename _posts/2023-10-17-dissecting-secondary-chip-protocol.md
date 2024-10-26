@@ -1,7 +1,9 @@
+---
 layout: post
 title: "So what's up with the scondary chip"
 date: 2023-10-18 10:00:00 -0000
-categories: kasa-tapo
+tags: kasa tapo ks225
+---
 
 # What?
 
@@ -17,7 +19,7 @@ So I've tried to just probe the UART pins with a wire and sniff on the connectio
 
 Aand we have a problem. It looks like the onl communication that happens is sending the same bytes every second, regardless of what I do with the switch and dimmer buttons. yikes.
 
-![protocol sniff](./2023-10-17-dissecting-secondary-chip-protocol/protocol-sniff.png)
+![protocol sniff]({{ site.baseurl }}/assets/images/2023-10-17-dissecting-secondary-chip-protocol/protocol-sniff.png)
 
 But I do have a clue I think. The dimmer level LEDs also stay off when the PCB is not connected to the high-voltage part. So maybe there's some kind of status sensing that enables or disables the actual data transfer between the two?
 

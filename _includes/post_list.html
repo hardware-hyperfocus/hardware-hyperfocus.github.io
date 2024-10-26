@@ -1,0 +1,17 @@
+{% if page.posts-tag %}
+  {% assign posts = site.posts | where_exp: "item", "item.tags contains page.posts-tag" %}
+{% else %}
+  {% assign posts = site.posts %}
+{% endif %}
+{% if posts.size > 0 %}
+  <ul>
+    {% for post in posts %}
+      <li class="post-list-item">
+        <span class="home-date">
+          {{ post.date | date: site.theme_config.date_format }}»
+        </span>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
