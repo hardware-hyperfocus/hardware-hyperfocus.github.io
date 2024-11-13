@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Figuring out kasa switches"
-date: 2023-10-15 10:00:00 -0000
+date: 2024-10-15 10:00:00 -0000
 tags: kasa tapo ks225
 ---
 
@@ -25,11 +25,11 @@ A few reasons:
 
 After googling around, I wasn't able to find any info on the hardware in these, so let's just open one and see for ourselves! The usual technique of shoving an old plastic card into the gaps until it opens seems to work, though the clips are pretty stiff and hard to work apart:
 
-![opening the device](/assets/images/2023-10-15-figuring-out-kasa-switches/opening-the-device.jpg)
+![opening the device](/assets/images/2024-10-15-figuring-out-kasa-switches/opening-the-device.jpg)
 
 There's two PCBs inside: one for the high-voltage components and one for the logic, wifi etc:
 
-![opening the device](/assets/images/2023-10-15-figuring-out-kasa-switches/two-PCBs.jpg)
+![opening the device](/assets/images/2024-10-15-figuring-out-kasa-switches/two-PCBs.jpg)
 
 Looking closer at the logic board, it seems to be run by an RTL8720CM. Thankfully, it's (mostly) supported in `esphome` through `libretiny`!
 
@@ -40,16 +40,16 @@ Well idk, let's reverse it and figure out!
 Took some pictures, cropped and stretched them to roughly fit the actual dimentions of the board:
 
 
-![pcb top](/assets/images/2023-10-15-figuring-out-kasa-switches/pcb-top.png)
-![pcb bottom](/assets/images/2023-10-15-figuring-out-kasa-switches/pcb-bottom.png)
+![pcb top](/assets/images/2024-10-15-figuring-out-kasa-switches/pcb-top.png)
+![pcb bottom](/assets/images/2024-10-15-figuring-out-kasa-switches/pcb-bottom.png)
 
 Though Google seems to think otherwise, KiCAD has a feature to insert images in the PCB editor now, so let's start from there!
 
 
 I've added custom symbols/footprints for the two ICs and got to work tracing the PCBs from the photos. This went surprisingly smoothly, even if it took me a shit ton of time due to my lack of experience. I'm not aiming to trace everything or deduce actual values for the components on the board, jut try to figure out the bits that are important for my needs:
 
-![pcb traced](/assets/images/2023-10-15-figuring-out-kasa-switches/pcb-traced.png)
-![partial schematics](/assets/images/2023-10-15-figuring-out-kasa-switches/partial-schematics.png)
+![pcb traced](/assets/images/2024-10-15-figuring-out-kasa-switches/pcb-traced.png)
+![partial schematics](/assets/images/2024-10-15-figuring-out-kasa-switches/partial-schematics.png)
 
 This gives us a look at what's going on! The main MCU, RTL8720CM, is doing most of the heavy lifting: connectivity, buttons, lights - you name it. It's connected to the other one, CMS8S58BD, via UART0, and that chip handles the control of the actual high-voltage dimmer cirquitry and output to the dimming level LEDs. We also have test points going straight to the important bits (i.e. UART1, GND, 5v and 3v3)!
 
