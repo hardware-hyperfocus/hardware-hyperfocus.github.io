@@ -131,3 +131,5 @@ UART1: 00060100001c0600d5fa
 ```
 
 Thanks to the photos from before, I know that the yellow wire (first dump) goes to brown wire on the inside. So, the first dump is data going from the RTL to the CMS, and the second one is the reverse! Now we can finally start digging into these, but that's another post 😁
+
+Part 3 [here]({% link _posts/2024-12-20-dissecting-secondary-chip-protocol-3.md %}).
