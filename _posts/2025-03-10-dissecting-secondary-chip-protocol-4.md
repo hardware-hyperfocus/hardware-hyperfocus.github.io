@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Dissecting the secondary chip protocol - pt.3"
+title: "Dissecting the secondary chip protocol - pt.4"
 date: 2025-03-10 10:00:00 -0000
 tags: kasa tapo ks225
 ---
