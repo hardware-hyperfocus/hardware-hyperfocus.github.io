@@ -67,4 +67,4 @@ That explains a lot though! After some more back-and-forth and testing, I was fi
 
 Wooo 🥳 
 
-...and, apparently, there goes my motivation (writing this two months later 😥). See you in the [next post]({% link _posts/2025-06-08-building-the-protocol.md})!
+...and, apparently, there goes my motivation (writing this two months later 😥). See you in the [next post]({% link _posts/2025-06-08-building-the-protocol.md %})!
