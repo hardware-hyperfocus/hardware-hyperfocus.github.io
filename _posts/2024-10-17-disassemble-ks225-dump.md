@@ -2,7 +2,7 @@
 layout: post
 title: "Disassembling KS225 dump"
 date: 2024-10-17 12:00:00 -0000
-tags: kasa tapo ks225
+tags: kasa tapo ks225 esphome
 ---
 
 # Why

@@ -2,7 +2,7 @@
 layout: post
 title: "Figuring out kasa switches"
 date: 2024-10-15 10:00:00 -0000
-tags: kasa tapo ks225
+tags: kasa tapo ks225 esphome
 ---
 
 # What?

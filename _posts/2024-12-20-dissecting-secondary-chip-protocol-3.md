@@ -2,7 +2,7 @@
 layout: post
 title: "Dissecting the secondary chip protocol - pt.3"
 date: 2024-12-20 10:00:00 -0000
-tags: kasa tapo ks225
+tags: kasa tapo ks225 esphome
 ---
 
 Part 2 [here]({% link _posts/2024-11-12-dissecting-secondary-chip-protocol-2.md %}).

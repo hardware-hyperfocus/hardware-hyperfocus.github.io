@@ -2,7 +2,7 @@
 layout: post
 title: "Dissecting the secondary chip protocol - pt.1"
 date: 2024-10-20 10:00:00 -0000
-tags: kasa tapo ks225
+tags: kasa tapo ks225 esphome 
 ---
 
 # What?
@@ -20,7 +20,7 @@ So I've tried to just probe the UART pins with a wire and sniff on the connectio
 ![probing](/assets/images/2024-10-20-dissecting-secondary-chip-protocol/probing.jpg)
 
 
-Aand we have a problem. It looks like the onl communication that happens is sending the same bytes every second, regardless of what I do with the switch and dimmer buttons. yikes.
+Aand we have a problem. It looks like the only communication that happens is sending the same bytes every second, regardless of what I do with the switch and dimmer buttons. yikes.
 
 ![protocol sniff](/assets/images/2024-10-20-dissecting-secondary-chip-protocol/protocol-sniff.png)
 
